@@ -1,3 +1,4 @@
+/* App.css */
 .game-background {
   position: relative;
   height: 100vh;
@@ -18,7 +19,7 @@
 .stage-layer {
   z-index: 10;
 }
-
+/* Button layer for About Me */
 .button-layer-about-me {
   padding: 0;
   border: none;
@@ -29,10 +30,11 @@
 .button-layer-about-me img {
   width: 35%;
   height: 35%;
-  left: 200px;
+  left: 125px;
   object-fit: contain; /* or cover, depending on look you want */
 }
 
+/* Button layer for Contact Me */
 .button-layer-contact-me {
   padding: 0;
   border: none;
@@ -43,10 +45,11 @@
 .button-layer-contact-me img {
   width: 35%;
   height: 35%;
-  left: 425px;
-  top: 200px;
+  left: 680px;
+  top: 150px;
   object-fit: contain; /* or cover, depending on look you want */
 }
+/* Button layer for Portfolio */
 .button-layer-portfolio {
   padding: 0;
   border: none;
@@ -57,10 +60,12 @@
 .button-layer-portfolio img {
   width: 35%;
   height: 35%;
-  left: 425px;
-  top: 200px;
+  left: 320px;
+  top: 150px;
+  z-index: 0;
   object-fit: contain; /* or cover, depending on look you want */
 }
+/* Button layer for Projects */
 .button-layer-projects {
   padding: 0;
   border: none;
@@ -69,13 +74,15 @@
 }
 
 .button-layer-projects img {
-  width: 35%;
-  height: 35%;
-  left: 425px;
-  top: 200px;
+  width: 31%;
+  height: 31%;
+  left: 799px;
+  top: -12px;
   object-fit: contain; /* or cover, depending on look you want */
+}
   
-}.button-layer-experience {
+/* Button layer for Experience */
+.button-layer-experience {
   padding: 0;
   border: none;
   background: none;
@@ -83,10 +90,9 @@
 }
 
 .button-layer-experience img {
-  width: 35%;
-  height: 35%;
-  left: 425px;
-  top: 200px;
+  width: 31%;
+  height: 31%;
+  left: 480px;
   object-fit: contain; /* or cover, depending on look you want */
 }
 
