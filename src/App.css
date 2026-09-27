@@ -47,4 +47,46 @@
   top: 200px;
   object-fit: contain; /* or cover, depending on look you want */
 }
+.button-layer-portfolio {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.button-layer-portfolio img {
+  width: 35%;
+  height: 35%;
+  left: 425px;
+  top: 200px;
+  object-fit: contain; /* or cover, depending on look you want */
+}
+.button-layer-projects {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.button-layer-projects img {
+  width: 35%;
+  height: 35%;
+  left: 425px;
+  top: 200px;
+  object-fit: contain; /* or cover, depending on look you want */
+  
+}.button-layer-experience {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.button-layer-experience img {
+  width: 35%;
+  height: 35%;
+  left: 425px;
+  top: 200px;
+  object-fit: contain; /* or cover, depending on look you want */
+}
 
