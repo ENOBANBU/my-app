@@ -11,6 +11,7 @@ import './App.css';
 function App() {
   return (
     <>
+    <h1 className="text-3xl text-blue-500 font-bold">Test</h1>
 <div className="game-background">
       <img src={bgImage} alt="background" />
       <img src={stageNoBackground} alt="stage" className="stage-layer" />
