@@ -19,16 +19,32 @@
   z-index: 10;
 }
 
-.button-layer {
+.button-layer-about-me {
   padding: 0;
   border: none;
   background: none;
   cursor: pointer;
 }
 
-.button-layer img {
-  width: 40%;
-  height: 40%;
+.button-layer-about-me img {
+  width: 35%;
+  height: 35%;
   left: 200px;
   object-fit: contain; /* or cover, depending on look you want */
 }
+
+.button-layer-contact-me {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.button-layer-contact-me img {
+  width: 35%;
+  height: 35%;
+  left: 425px;
+  top: 200px;
+  object-fit: contain; /* or cover, depending on look you want */
+}
+
