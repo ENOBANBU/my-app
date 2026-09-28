@@ -22,11 +22,11 @@ function App() {
 <div className="game-background">
       <img src={bgImage} alt="background" />
       <img src={stageNoBackground} alt="stage" className="stage-layer" />
-      <button className='button-layer-portfolio'onClick={() => scrollToSection("portfolio")}><img src={portfolioImage} alt="Portfolio" /> </button>
+      <button className='button-layer-portfolio' onClick={() => scrollToSection("portfolio")}><img src={portfolioImage} alt="Portfolio" /> </button>
       <button className='button-layer-about-me' onClick={() => scrollToSection("about")}><img src={aboutMeImage} alt="About Me" /> </button>
-      <button className='button-layer-contact-me'><img src={contactMeImage} alt="Contact Me" /> </button>
-      <button className='button-layer-projects'><img src={projectImage} alt="Projects" /> </button>
-      <button className='button-layer-experience'><img src={experienceImage} alt="Experience" /> </button>
+      <button className='button-layer-contact-me' onClick={() => scrollToSection('contact')}><img src={contactMeImage} alt="Contact Me" /> </button>
+      <button className='button-layer-projects' onClick={() => scrollToSection('projects')}><img src={projectImage} alt="Projects" /> </button>
+      <button className='button-layer-experience' onClick={() => scrollToSection('experience')}><img src={experienceImage} alt="Experience" /> </button>
     </div>
 
     
@@ -35,9 +35,26 @@ function App() {
       <img className="cloud-background" src={deepCloud} alt="Deep Clouds" />
     </div>
       </section>
-
       
     <section id='portfolio' className='page-section'>
+<div className="deep-cloud-background">
+      <img className="cloud-background" src={deepCloud} alt="Deep Clouds" />
+    </div>
+      </section>
+
+      <section id='projects' className='page-section'>
+<div className="deep-cloud-background">
+      <img className="cloud-background" src={deepCloud} alt="Deep Clouds" />
+    </div>
+      </section>
+
+      <section id='experience' className='page-section'>
+<div className="deep-cloud-background">
+      <img className="cloud-background" src={deepCloud} alt="Deep Clouds" />
+    </div>
+      </section>
+      
+    <section id='contact' className='page-section'>
 <div className="deep-cloud-background">
       <img className="cloud-background" src={deepCloud} alt="Deep Clouds" />
     </div>
