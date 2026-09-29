@@ -48,8 +48,8 @@
   outline: 2px solid red;
   clip-path: inset(3% 7% 7% 5%);
   left: 690px;
-  top: 220px;
-  width: 390px;
+  top: 230px;
+  width: 380px;
   aspect-ratio: 2484/1728;
   padding: 0;
   border: none;
@@ -71,8 +71,8 @@
   outline: 2px solid red;
   clip-path: inset(2% 3% 7% 10%);
   left: 310px;       /* was on the img rule */
-  top: 220px;        /* was on the img rule */
-  width: 390px;      /* pick a width that looks right */
+  top: 230px;        /* was on the img rule */
+  width: 380px;      /* pick a width that looks right */
   aspect-ratio: 2458 / 1696;
   padding: 0;
   border: none;
