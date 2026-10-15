@@ -1,155 +1,102 @@
-/* App.css */
-.game-background {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
+body {
+  background: #2a4fb5;
 }
 
-.game-background img{
+/* Crops to exactly one screen */
+.game-viewport {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #2a4fb5;
+}
+
+/* Scales to cover the screen while keeping the background's shape */
+.game-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100vw, calc(100vh * 1.84));
+  aspect-ratio: 1.84;
+}
+
+.game-background > img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  image-rendering: auto;
 }
 
 .stage-layer {
   z-index: 10;
 }
-/* Button layer for About Me */
-.button-layer-about-me {
-  position: absolute;
-  outline: 2px solid red;
-  clip-path: inset(3% 7% 17% 3%);
-  aspect-ratio: 2390 / 1792;
-  left: 180px;
-  width: 370px;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  z-index: 15;
-}
 
-.button-layer-about-me img {
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  object-fit: contain; /* or cover, depending on look you want */
-}
-
-/* Button layer for Contact Me */
+/* Shared button behavior */
+.button-layer-about-me,
+.button-layer-experience,
+.button-layer-projects,
+.button-layer-portfolio,
 .button-layer-contact-me {
   position: absolute;
-  outline: 2px solid red;
-  clip-path: inset(3% 7% 7% 5%);
-  left: 690px;
-  top: 230px;
-  width: 380px;
-  aspect-ratio: 2484/1728;
   padding: 0;
   border: none;
   background: none;
   cursor: pointer;
   z-index: 15;
+  transform: scale(0.85); /* change this number to resize all buttons */
 }
 
+.button-layer-about-me img,
+.button-layer-experience img,
+.button-layer-projects img,
+.button-layer-portfolio img,
 .button-layer-contact-me img {
+  display: block;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
-  object-fit: contain; /* or cover, depending on look you want */
-}
-/* Button layer for Portfolio */
-.button-layer-portfolio {
-  position: absolute;
-  outline: 2px solid red;
-  clip-path: inset(2% 3% 7% 10%);
-  left: 310px;       /* was on the img rule */
-  top: 230px;        /* was on the img rule */
-  width: 380px;      /* pick a width that looks right */
-  aspect-ratio: 2458 / 1696;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  z-index: 15;
-}
-
-.button-layer-portfolio img {
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
   object-fit: contain;
 }
-/* Button layer for Projects */
-.button-layer-projects {
-  position: absolute;
-  outline: 2px solid red;
-  clip-path: inset(3% 1% 5% 0%);
-  left: 870px;
-  top: -12px;
-  width: 310px;
-  aspect-ratio: 2306 / 1824;
-  z-index: 15;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
+
+/* Per-button position, size and hitbox */
+.button-layer-about-me {
+  left: 13.98%;
+  top: 0%;
+  width: 28.73%;
+  aspect-ratio: 2390 / 1792;
+  clip-path: inset(3% 7% 17% 3%);
 }
 
-.button-layer-projects img {
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  object-fit: contain; /* or cover, depending on look you want */
-}
-  
-/* Button layer for Experience */
 .button-layer-experience {
-  position: absolute;
-  outline: 2px solid red;
+  left: 40.37%;
+  top: -0.71%;
+  width: 27.95%;
+  aspect-ratio: 2484 / 1728;
   clip-path: inset(2% 5% 7% 5%);
-  left: 520px;
-  top: -5px;
-  width: 360px;
-  aspect-ratio: 2484/1728;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  z-index: 15;
 }
 
-.button-layer-experience img {
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  object-fit: contain; /* or cover, depending on look you want */
+.button-layer-projects {
+  left: 67.55%;
+  top: -1.71%;
+  width: 24.07%;
+  aspect-ratio: 2306 / 1824;
+  clip-path: inset(3% 1% 5% 0%);
 }
 
-.deep-cloud-background {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
+.button-layer-portfolio {
+  left: 24.07%;
+  top: 32.86%;
+  width: 29.5%;
+  aspect-ratio: 2458 / 1696;
+  clip-path: inset(2% 3% 7% 10%);
 }
 
-.cloud-background {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  image-rendering: auto;
-}
-
-.page-section {
-  min-height: 100vh;
+.button-layer-contact-me {
+  left: 53.57%;
+  top: 32.86%;
+  width: 29.5%;
+  aspect-ratio: 2484 / 1728;
+  clip-path: inset(3% 7% 7% 5%);
 }
