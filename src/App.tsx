@@ -7,6 +7,9 @@ import projectImage from './images/Arcade_projects-nobg.png';
 import experienceImage from './images/Experience-nobg.png';
 import deepCloud from './images/deep-clouds-bg.png';
 import profilePic from './images/Pixel Hero with Golden Aura.png'; // change to your photo's actual filename
+import githubIcon from './images/github.png';
+import linkedinIcon from './images/linkedin.png';
+import gmailIcon from './images/gmail.png';
 import './App.css';
 
 interface Stat {
@@ -25,12 +28,13 @@ interface ContactLink {
   label: string;
   handle: string;
   url: string;
+  icon: string;
 }
 
 const contactLinks: ContactLink[] = [
-  { label: 'GitHub', handle: 'ENOBANBU', url: 'https://github.com/ENOBANBU' },
-  { label: 'LinkedIn', handle: 'eni-bamgbelu', url: 'https://www.linkedin.com/in/eni-bamgbelu/' },
-  { label: 'Email', handle: 'you@email.com', url: 'mailto:you@email.com' }, // replace with your email
+  { label: 'GitHub', handle: 'ENOBANBU', url: 'https://github.com/ENOBANBU', icon: githubIcon },
+  { label: 'LinkedIn', handle: 'eni-bamgbelu', url: 'https://www.linkedin.com/in/eni-bamgbelu/', icon: linkedinIcon },
+  { label: 'Email', handle: 'you@email.com', url: 'mailto:you@email.com', icon: gmailIcon }, // replace with your email
 ];
 
 function scrollToSection(id: string) {
@@ -126,27 +130,34 @@ function App() {
       </Section>
 
       <Section id="contact" title="Insert Coin">
-  <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+  <div className="flex flex-wrap justify-center gap-8">
     {contactLinks.map((link) => (
       <a
         key={link.label}
         href={link.url}
         target="_blank"
         rel="noreferrer"
-        className="border-4 border-black bg-white p-6 text-center transition hover:-translate-y-1 hover:bg-yellow-100"
+        className="flex w-72 flex-col items-center border-4 border-black bg-white p-6 text-center transition hover:-translate-y-1 hover:bg-yellow-100"
       >
+        <img
+          src={link.icon}
+          alt={`${link.label} logo`}
+          className="mb-4 h-24 w-24 object-contain [image-rendering:pixelated]"
+        />
         <h3 className="mb-2 text-2xl font-bold">{link.label}</h3>
         <p className="break-words text-lg">{link.handle}</p>
       </a>
     ))}
   </div>
 
-  <button
-    onClick={() => scrollToSection('home')}
-    className="mt-8 border-4 border-black bg-white px-6 py-3 font-bold transition hover:bg-yellow-100"
-  >
-    ↑ Back to Stage
-  </button>
+  <div className="mt-10 text-center">
+    <button
+      onClick={() => scrollToSection('home')}
+      className="border-4 border-black bg-white px-6 py-3 font-bold transition hover:bg-yellow-100"
+    >
+      ↑ Back to Stage
+    </button>
+  </div>
 </Section>
     </>
   );
