@@ -34,6 +34,36 @@ body {
   z-index: 10;
 }
 
+/* The island platform + its buttons bob gently as one group */
+.floating-island {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  animation: island-float 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.floating-island > .stage-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes island-float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-2.8%); }
+  100% { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-island {
+    animation: none;
+  }
+}
+
 /* Shared button behavior */
 .button-layer-about-me,
 .button-layer-experience,
@@ -47,6 +77,8 @@ body {
   cursor: pointer;
   z-index: 15;
   transform: scale(0.85); /* change this number to resize all buttons */
+  transition: transform 0.18s ease-out, filter 0.18s ease-out;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .button-layer-about-me img,
@@ -58,6 +90,103 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transform-origin: 50% 85%; /* anchor near the plaque so flames dance up top */
+  animation: flame-flicker 1.7s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+/* Grow + glow on hover/focus so they read as real buttons */
+.button-layer-about-me:hover,
+.button-layer-experience:hover,
+.button-layer-projects:hover,
+.button-layer-portfolio:hover,
+.button-layer-contact-me:hover,
+.button-layer-about-me:focus-visible,
+.button-layer-experience:focus-visible,
+.button-layer-projects:focus-visible,
+.button-layer-portfolio:focus-visible,
+.button-layer-contact-me:focus-visible {
+  transform: scale(0.92);
+  filter: drop-shadow(0 0 16px rgba(255, 150, 40, 0.75));
+}
+
+.button-layer-about-me:active,
+.button-layer-experience:active,
+.button-layer-projects:active,
+.button-layer-portfolio:active,
+.button-layer-contact-me:active {
+  transform: scale(0.88);
+}
+
+/* Flames burn faster when you hover */
+.button-layer-about-me:hover img,
+.button-layer-experience:hover img,
+.button-layer-projects:hover img,
+.button-layer-portfolio:hover img,
+.button-layer-contact-me:hover img {
+  animation-duration: 1.6s;
+}
+
+/* De-sync each button so the flames don't move in lockstep */
+.button-layer-about-me img { animation-duration: 3.0s; animation-delay: -0.4s; }
+.button-layer-experience img { animation-duration: 3.6s; animation-delay: -1.7s; }
+.button-layer-projects img { animation-duration: 3.2s; animation-delay: -2.4s; }
+.button-layer-portfolio img { animation-duration: 3.8s; animation-delay: -1.0s; }
+.button-layer-contact-me img { animation-duration: 3.4s; animation-delay: -2.9s; }
+
+@keyframes flame-flicker {
+  0%   { transform: scaleY(1)     scaleX(1)     translateY(0);     filter: brightness(1)    saturate(1); }
+  20%  { transform: scaleY(1.025) scaleX(0.99)  translateY(-0.5%); filter: brightness(1.1)  saturate(1.14); }
+  40%  { transform: scaleY(0.99)  scaleX(1.008) translateY(0.25%); filter: brightness(0.95) saturate(1.04); }
+  60%  { transform: scaleY(1.018) scaleX(0.996) translateY(-0.3%); filter: brightness(1.07) saturate(1.1); }
+  80%  { transform: scaleY(0.997) scaleX(1.004) translateY(0.15%); filter: brightness(0.98) saturate(1.05); }
+  100% { transform: scaleY(1)     scaleX(1)     translateY(0);     filter: brightness(1)    saturate(1); }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .button-layer-about-me img,
+  .button-layer-experience img,
+  .button-layer-projects img,
+  .button-layer-portfolio img,
+  .button-layer-contact-me img {
+    animation: none;
+  }
+}
+
+/* ---- Blend the home stage into the sections below ---- */
+.game-viewport::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 20%;
+  z-index: 11; /* above the stage art, below the buttons (z-15) */
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(20, 30, 70, 0) 0%, rgba(20, 30, 70, 0.6) 100%);
+}
+
+/* One continuous, parallax sky behind every lower section */
+.sections-bg {
+  position: relative;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Soft fade at the top so the sky meets the home stage seamlessly */
+.sections-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(20, 30, 70, 0.6) 0%, rgba(20, 30, 70, 0) 100%);
 }
 
 /* Per-button position, size and hitbox */
