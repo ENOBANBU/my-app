@@ -116,6 +116,15 @@ const experiences: Experience[] = [
   },
 ];
 
+// Menu shown on phones/tablets in place of the wide arcade stage.
+const navItems: { id: string; label: string; sub: string }[] = [
+  { id: 'about', label: 'PLAYER PROFILE', sub: 'About Me' },
+  { id: 'portfolio', label: 'SAVE DATA', sub: 'Resume' },
+  { id: 'projects', label: 'STAGE SELECT', sub: 'Projects' },
+  { id: 'experience', label: 'CAREER MODE', sub: 'Experience' },
+  { id: 'contact', label: 'INSERT COIN', sub: 'Contact' },
+];
+
 function scrollToSection(id: string) {
   const element = document.getElementById(id);
   if (element) {
@@ -141,7 +150,7 @@ function Section({ id, title, children }: { id: string; title: string; children:
     <section id={id} className="relative min-h-screen">
       <div className="relative z-10 mx-auto w-full max-w-[1300px] px-6 py-10 md:px-12">
         <div className="rounded-lg border-4 border-black bg-white/85 p-6 shadow-pixel md:p-10">
-          <h2 className="mb-8 font-pixel text-2xl leading-relaxed md:text-3xl">{title}</h2>
+          <h2 className="mb-8 font-pixel text-lg leading-relaxed sm:text-2xl md:text-3xl">{title}</h2>
           {children}
         </div>
       </div>
@@ -152,26 +161,62 @@ function Section({ id, title, children }: { id: string; title: string; children:
 function App() {
   return (
     <>
-      <div id="home" className="game-viewport">
-        <div className="game-background">
-          <img src={bgImage} alt="background" />
-          <div className="floating-island">
-            <img src={stageNoBackground} alt="stage" className="stage-layer" />
-            <button className="button-layer-portfolio" onClick={() => scrollToSection('portfolio')}>
-              <img src={portfolioImage} alt="Portfolio" />
-            </button>
-            <button className="button-layer-about-me" onClick={() => scrollToSection('about')}>
-              <img src={aboutMeImage} alt="About Me" />
-            </button>
-            <button className="button-layer-contact-me" onClick={() => scrollToSection('contact')}>
-              <img src={contactMeImage} alt="Contact Me" />
-            </button>
-            <button className="button-layer-projects" onClick={() => scrollToSection('projects')}>
-              <img src={projectImage} alt="Projects" />
-            </button>
-            <button className="button-layer-experience" onClick={() => scrollToSection('experience')}>
-              <img src={experienceImage} alt="Experience" />
-            </button>
+      <div id="home">
+        {/* Wide screens (lg+): the full arcade stage */}
+        <div className="hidden game-viewport lg:block">
+          <div className="game-background">
+            <img src={bgImage} alt="background" />
+            <div className="floating-island">
+              <img src={stageNoBackground} alt="stage" className="stage-layer" />
+              <button className="button-layer-portfolio" onClick={() => scrollToSection('portfolio')}>
+                <img src={portfolioImage} alt="Portfolio" />
+              </button>
+              <button className="button-layer-about-me" onClick={() => scrollToSection('about')}>
+                <img src={aboutMeImage} alt="About Me" />
+              </button>
+              <button className="button-layer-contact-me" onClick={() => scrollToSection('contact')}>
+                <img src={contactMeImage} alt="Contact Me" />
+              </button>
+              <button className="button-layer-projects" onClick={() => scrollToSection('projects')}>
+                <img src={projectImage} alt="Projects" />
+              </button>
+              <button className="button-layer-experience" onClick={() => scrollToSection('experience')}>
+                <img src={experienceImage} alt="Experience" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Phones / tablets: stacked pixel menu over the island art */}
+        <div
+          className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-cover bg-center px-4 py-16 lg:hidden"
+          style={{ backgroundImage: `url("${bgImage}")` }}
+        >
+          <div className="absolute inset-0 bg-black/35" />
+          <div className="relative z-10 w-full max-w-xs text-center">
+            <h1 className="font-pixel text-2xl leading-relaxed text-white [text-shadow:3px_3px_0_rgba(0,0,0,0.85)]">
+              ENIOLA
+              <br />
+              BAMGBELU
+            </h1>
+            <p className="mb-8 mt-3 animate-pulse font-pixel text-[10px] text-yellow-200 [text-shadow:2px_2px_0_rgba(0,0,0,0.85)]">
+              PRESS START
+            </p>
+            <nav className="flex flex-col gap-4">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="flex items-center justify-between gap-3 border-4 border-black bg-white px-4 py-3 shadow-pixel-sm transition hover:bg-yellow-100 active:translate-y-0.5"
+                >
+                  <span className="font-pixel text-[11px]">{item.label}</span>
+                  <span className="text-xs text-gray-500">{item.sub}</span>
+                </button>
+              ))}
+            </nav>
+            <p className="mt-8 font-pixel text-[9px] text-white/80 [text-shadow:2px_2px_0_rgba(0,0,0,0.85)]">
+              &#9660; SCROLL &#9660;
+            </p>
           </div>
         </div>
       </div>
@@ -347,7 +392,7 @@ function App() {
               href={link.url}
               target="_blank"
               rel="noreferrer"
-              className="flex w-72 flex-col items-center border-4 border-black bg-white p-6 text-center shadow-pixel-sm transition hover:-translate-y-1 hover:bg-yellow-100"
+              className="flex w-full max-w-xs flex-col items-center border-4 border-black bg-white p-6 text-center shadow-pixel-sm transition hover:-translate-y-1 hover:bg-yellow-100 sm:w-72"
             >
               <img
                 src={link.icon}
